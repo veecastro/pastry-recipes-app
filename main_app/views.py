@@ -8,6 +8,9 @@ def home(request):
   # Include an .html file extension - unlike when rendering EJS templates
   return render(request, 'home.html')
 
+def about(request):
+  return render(request, 'about.html')
+
 def recipes_index(request):
   pastryrecipes = Pastryrecipe.objects.all()
   return render(request, 'recipes/index.html', {
@@ -17,5 +20,6 @@ def recipes_index(request):
 class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
+  template_name = 'main_app/recipe_form.html'
   success_url = '/recipes' 
 
