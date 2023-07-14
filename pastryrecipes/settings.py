@@ -78,6 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pastryrecipes',
+        'USER': 'noor',
+        'PASSWORD': '9786',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
