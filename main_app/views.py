@@ -17,6 +17,5 @@ def recipes_index(request):
 class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
-  template_name = 'main_app/recipe_form.html'  # Update the template file name
   success_url = '/recipes' 
 
