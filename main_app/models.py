@@ -10,6 +10,8 @@ class Pastryrecipe(models.Model):
     yields = models.IntegerField()
     instructions = models.TextField()
     ingredients = models.TextField()
+    photo_url = models.URLField()
+
 
 def __str__(self):
     return f'{self.name} ({self.id})'
