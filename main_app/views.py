@@ -10,12 +10,13 @@ def home(request):
 
 def recipes_index(request):
   pastryrecipes = Pastryrecipe.objects.all()
-  return render(request, 'pastryrecipes/index.html', {
+  return render(request, 'recipes/index.html', {
     'pastryrecipes': pastryrecipes
   })
 
 class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
-  success_url = '/pastryrecipes' 
+  template_name = 'main_app/recipe_form.html'  # Update the template file name
+  success_url = '/recipes' 
 
