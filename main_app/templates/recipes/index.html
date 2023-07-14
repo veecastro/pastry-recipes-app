@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Recipes</h1>
+
+{% for recipe in recipes %}
+<a href="{% url 'detail' recipe.id %}">
+  <div class="card" style="background-image: url('{{ recipe.photo_url }}');">
+    <div class="card-content">
+      <span class="card-title">{{ recipe.title }}</span>
+      {% if recipe.title %}
+        <p>Title: {{ recipe.title }}</p>
+      {% else %}
+        <p>Title: unknown</p>
+      {% endif %}
+    </div>
+  </div>
+</a>
+{% endfor %}
+<a href="{% url 'create' %}">Create New Recipe</a>
+
+{% endblock %}
