@@ -17,6 +17,12 @@ def recipes_index(request):
     'pastryrecipes': pastryrecipes
   })
 
+def recipes_detail(request, recipe_id):
+  recipe = Pastryrecipe.objects.get(id=recipe_id)
+  return render(request, 'recipes/detail.html', {
+    'recipe': recipe
+  })
+
 class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
