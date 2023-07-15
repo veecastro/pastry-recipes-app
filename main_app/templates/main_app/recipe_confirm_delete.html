@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Are you sure you want to delete {{ object.title }}?</h1>
+<form action="{% url 'recipe_delete' object.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete" class="btn">
+    <a href="{% url 'detail' object.id %}"> Cancel</a>
+</form>
+
+{% endblock %}

@@ -12,7 +12,7 @@ class Pastryrecipe(models.Model):
     ingredients = models.TextField()
     photo = models.ImageField(upload_to='recipes/', blank=True)
 
-    # photo_url = models.URLField()
+   
 
 
     def __str__(self):
