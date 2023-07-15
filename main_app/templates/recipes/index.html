@@ -3,7 +3,7 @@
 
 <h1>Recipes</h1>
 
-{% for recipe in recipes %}
+{% for recipe in pastryrecipes %}
 <a href="{% url 'detail' recipe.id %}">
   <div class="card" style="background-image: url('{{ recipe.photo_url }}');">
     <div class="card-content">
