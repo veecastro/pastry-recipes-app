@@ -1,11 +1,9 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pastryrecipe
 
-# Create your views here.
-# Define the home view
+
 def home(request):
-  # Include an .html file extension - unlike when rendering EJS templates
   return render(request, 'home.html')
 
 def about(request):
@@ -29,3 +27,11 @@ class RecipeCreate(CreateView):
   template_name = 'main_app/recipe_form.html'
   success_url = '/recipes' 
 
+class RecipeUpdate(UpdateView):
+  model = Pastryrecipe
+  fields = '__all__'
+  success_url = '/recipes'
+
+class RecipeDelete(DeleteView):
+  model = Pastryrecipe
+  success_url = '/recipes'
