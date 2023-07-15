@@ -8,9 +8,11 @@ class Pastryrecipe(models.Model):
     cookingtime = models.IntegerField()
     totaltime = models.IntegerField()
     yields = models.IntegerField()
-    ingredients = models.TextField()
     instructions = models.TextField()
-    # photo_url = models.URLField()
+    ingredients = models.TextField()
+    photo = models.ImageField(upload_to='recipes/', blank=True)
+
+   
 
 
     def __str__(self):
