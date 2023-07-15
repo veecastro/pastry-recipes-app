@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
-# from.django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pastryrecipe
+
 
 def home(request):
   return render(request, 'home.html')
@@ -16,19 +16,23 @@ def recipes_index(request):
   })
 
 def recipes_detail(request, recipe_id):
- pastryrecipe = Pastryrecipe.objects.get(id=recipe_id)
- return render(request, 'recipes/detail.html', {
-   'pastryrecipe': pastryrecipe
- })
-
-# class RecipeList(ListView):
-#   model = Pastryrecipe
-#   template_name = 'recipes/index.html'
-#   # context_object_name = 'pastryrecipes'
+  recipe = Pastryrecipe.objects.get(id=recipe_id)
+  return render(request, 'recipes/detail.html', {
+    'recipe': recipe
+  })
 
 class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
   template_name = 'main_app/recipe_form.html'
-  success_url = '/recipes' 
+  success_url = '/recipes/' 
 
+class RecipeUpdate(UpdateView):
+  model = Pastryrecipe
+  template_name = 'main_app/recipe_form.html'
+  fields = '__all__'
+
+class RecipeDelete(DeleteView):
+  model = Pastryrecipe
+  success_url = '/recipes/'
+  template_name = 'main_app/recipe_confirm_delete.html'
