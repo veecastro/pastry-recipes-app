@@ -10,11 +10,11 @@ class Pastryrecipe(models.Model):
     yields = models.IntegerField()
     instructions = models.TextField()
     ingredients = models.TextField()
-    photo_url = models.URLField()
+    # photo_url = models.URLField()
 
 
-def __str__(self):
-    return f'{self.name} ({self.id})'
+    def __str__(self):
+        return f'{self.name} ({self.id})'
 
-def get_absolute_url(self):
-    return reverse('detail', kwargs={'recipe_id': self.id})
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'recipe_id': self.id})
