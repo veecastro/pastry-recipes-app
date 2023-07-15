@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+# from.django.views.generic import ListView
 from .models import Pastryrecipe
-
 
 def home(request):
   return render(request, 'home.html')
@@ -15,11 +15,16 @@ def recipes_index(request):
     'pastryrecipes': pastryrecipes
   })
 
-def recipes_detail(request, recipe_id):
-  recipe = Pastryrecipe.objects.get(id=recipe_id)
-  return render(request, 'recipes/detail.html', {
-    'recipe': recipe
-  })
+def recipe_detail(request, recipe_id):
+ pastryrecipe = Pastryrecipe.objects.get(id=recipe_id)
+ return render(request, 'recipes/detail.html', {
+   'pastryrecipe': pastryrecipe
+ })
+
+# class RecipeList(ListView):
+#   model = Pastryrecipe
+#   template_name = 'recipes/index.html'
+#   # context_object_name = 'pastryrecipes'
 
 class RecipeCreate(CreateView):
   model = Pastryrecipe
