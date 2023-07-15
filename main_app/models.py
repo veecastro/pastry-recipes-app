@@ -10,6 +10,8 @@ class Pastryrecipe(models.Model):
     yields = models.IntegerField()
     instructions = models.TextField()
     ingredients = models.TextField()
+    photo = models.ImageField(upload_to='recipes/', blank=True)
+
     # photo_url = models.URLField()
 
 

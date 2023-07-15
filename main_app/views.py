@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from.django.views.generic import ListView
 from .models import Pastryrecipe
 
+
 def home(request):
   return render(request, 'home.html')
 
@@ -28,6 +29,9 @@ def recipe_detail(request, recipe_id):
 
 class RecipeCreate(CreateView):
   model = Pastryrecipe
+  def form_valid(self, form):
+   form.instance.photo = self.request.FILES.get('photo') 
+   return super().form_valid(form)
   fields = '__all__'
   template_name = 'main_app/recipe_form.html'
   success_url = '/recipes' 
