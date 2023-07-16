@@ -33,13 +33,18 @@ def add_photo(request, recipe_id):
       Photo.objects.create(url=url, recipe_id=recipe_id)
     except:
       print('An error occurred uploading file to S3')
-  return redirect('recipes_index')
+  return redirect('details', recipe_id=recipe_id)
 
 class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
   template_name = 'main_app/recipe_form.html'
   success_url = '/recipes/' 
+
+def form_valid(self, form):
+   form.instance.photo = self.request.FILES.get('photo')
+   return super(RecipeCreate, self).form_valid(form)
+
 
 class RecipeUpdate(UpdateView):
   model = Pastryrecipe
