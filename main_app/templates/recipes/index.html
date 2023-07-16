@@ -1,27 +1,36 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<h1>Recipes</h1>
+<h1 class="index-title">Recipes</h1>
 <div class="row">
-{% for recipe in pastryrecipes %}
-<div class="col s12 m6 l4">
-<a href="{% url 'detail' recipe.id %}">
-  <div class="card-panel">
-  <!-- <div class="card" style="background-image: url('{{ recipe.photo_url }}');"> -->
-    <div class="card-content"></div>
-    <div class="card-image">
-      <img src="{{ recipe.photo_url }}">
-      <span class="card-title">{{ recipe.title }}</span>
-    
-      <!-- <span class="card-title">{{ recipe.title }}</span> -->
-    </div>
-  </a>
+  {% for recipe in pastryrecipes %}
+  <div class="col s12 m6 l4">
+    <a href="{% url 'detail' recipe.id %}">
+      <div class="card-panel">
+        <div class="card-content">
+          <span class="card-title center-align">{{ recipe.title }}</span>
+
+          {% if recipe.photo_set.exists %}
+          <img
+            class="recipe-img responsive-img"
+            src="{{ recipe.img.url }}"
+          />
+          {% else %}
+          <img
+            class="recipe-img responsive-img"
+            src="https://i.imgur.com/cHwo2Gz.jpg"
+          />
+          {% endif %}
+          <!-- {% if recipe.photo.url %}
+          <img class="responsive-img card-panel" src="{{ recipe.photo.url }}">
+          {% endif %} -->
+          <!-- <div class="card-image" style="background-image: url('{{ recipe.photo.url }}');"> -->
+          <!-- <img src="{{ recipe.photo.url }}"> -->
+
+          <!-- <span class="card-title">{{ recipe.title }}</span> -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </a>
   </div>
+  {% endfor %} {% endblock %}
 </div>
-
-
-
-
-{% endfor %}
-</div>
-{% endblock %}
