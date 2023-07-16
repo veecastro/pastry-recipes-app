@@ -10,6 +10,7 @@ class Pastryrecipe(models.Model):
     yields = models.IntegerField()
     instructions = models.TextField()
     ingredients = models.TextField()
+    img = models.ImageField(upload_to='recipes/', blank=True)
     
     def __str__(self):
       return f'{self.title} ({self.id})'
