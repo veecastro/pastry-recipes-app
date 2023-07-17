@@ -25,7 +25,7 @@ def recipes_detail(request, recipe_id):
     'recipe': recipe
   })
 # still tryingto figure out how to add a photo to a recipe using aws  
-def add_photo(request, recipe_id):
+def add_photo(request, pastryrecipe_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
     s3 = boto3.client('s3')
@@ -34,11 +34,13 @@ def add_photo(request, recipe_id):
       bucket = os.environ['S3_BUCKET']
       s3.upload_fileobj(photo_file, bucket, key)
       url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-      Photo.objects.create(url=url, recipe_id=recipe_id)
+      Photo.objects.create(url=url, pastryrecipe_id=pastryrecipe_id)
     except Exception as e:
       print('An error occurred uploading file to S3')
       print(e)
-  return redirect('recipe_detail', recipe_id=recipe_id)
+  return redirect('detail', recipe_id=pastryrecipe_id)
+
+
 
 class RecipeCreate(CreateView):
   model = Pastryrecipe

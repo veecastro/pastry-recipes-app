@@ -23,4 +23,4 @@ class Photo(models.Model):
     recipe = models.ForeignKey(Pastryrecipe, on_delete=models.CASCADE)
 
     def __str__(self):
-      return f"Photo for {self.recipe_id} @ {self.url}"
+      return f"Photo for pastryrecipe_id: {self.pastryrecipe_id} @ {self.url}"
