@@ -4,13 +4,6 @@
 <h1>Recipe Details</h1>
 <div class="card">
     <span class="card-title">{{ recipe.title }}</span>
-    <!-- <div class="recipe-image">
-        {% if recipe.photo_set.exists %}
-        <img class="responsive-img" src="{{ recipe.photo.url }}">
-        {% else %}
-        <img class="responsive-img" src="https://i.imgur.com/cHwo2Gz.jpg">
-        {% endif %} -->
-    <!-- <img src="{{ recipe.photo_url }}" alt="{{ recipe.title }}"> -->
     <div class="card-content">
         <p>Category: {{ recipe.category }}</p>
         <p>Prep-time: {{ recipe.preptime }} minutes</p>
@@ -33,15 +26,13 @@
     <button type="submit" class="btn red">Delete Photo</button>
 </form>
 {% empty %}
-<div class="card-panel teal-text center-align">No Photos Uploaded</div>
+<div class="card-panel black-text center-align">No Photos Uploaded</div>
 {% endfor %}
 <form action="{% url 'add_photo' recipe.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
     {% csrf_token %}
     <input type="file" name="photo-file">
     <br><br>
     <button type="submit" class="btn">Upload Photo</button>
-    <!-- delete photo button
- photos not rendering when i upload them -->
 </form>
 </div>
 
