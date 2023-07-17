@@ -4,7 +4,7 @@ import boto3
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pastryrecipe, Photo
-from django.urls import reverse_lazy
+
 
 
 def home(request):
@@ -56,7 +56,7 @@ class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
   template_name = 'main_app/recipe_form.html'
-  success_url = reverse_lazy('recipe_create')
+  success_url = '/recipes/'
 
 def form_valid(self, form):
   form.instance.photo = self.request.FILES.get('photo')
