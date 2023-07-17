@@ -39,16 +39,4 @@ class Photo(models.Model):
     recipe = models.ForeignKey(Pastryrecipe, on_delete=models.CASCADE)
 
     def __str__(self):
-       return f"Photo for recipe_id: {self.recipe_id} @ {self.url}"
-
-# class Category(models.Model):
-#     name = models.CharField(
-#       max_length=4,
-#       choices=CATEGORY,
-#       default=CATEGORY[0][0]
-#     )
-#     recipe = models.ManyToManyField(Pastryrecipe)
-
-#     def __str__(self):
-#       return f'{self.get_category_display()}'
-
+      return f"Photo for {self.recipe_id} @ {self.url}"
