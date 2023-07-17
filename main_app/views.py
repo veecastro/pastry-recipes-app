@@ -1,6 +1,10 @@
-from django.shortcuts import render
+import os
+import uuid
+import boto3
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pastryrecipe, Photo
+from django.urls import reverse_lazy
 
 
 def home(request):
@@ -31,19 +35,20 @@ def add_photo(request, recipe_id):
       s3.upload_fileobj(photo_file, bucket, key)
       url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
       Photo.objects.create(url=url, recipe_id=recipe_id)
-    except:
+    except Exception as e:
       print('An error occurred uploading file to S3')
-  return redirect('details', recipe_id=recipe_id)
+      print(e)
+  return redirect('recipe_detail', recipe_id=recipe_id)
 
 class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
   template_name = 'main_app/recipe_form.html'
-  success_url = '/recipes/' 
+  reverse_lazy = ('recipe_create') 
 
 def form_valid(self, form):
-   form.instance.photo = self.request.FILES.get('photo')
-   return super(RecipeCreate, self).form_valid(form)
+  form.instance.photo = self.request.FILES.get('photo')
+  return super(RecipeCreate, self).form_valid(form)
 # still trying to figure out the code btwn comments
 
 class RecipeUpdate(UpdateView):
