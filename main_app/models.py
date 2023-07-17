@@ -2,15 +2,31 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+
+# CATEGORY = (
+#    ('CC', 'Cakes and Cupcakes'),
+#    ('PT', 'Pies and Tarts'),
+#    ('CB', 'Cookies and Bisquits'),
+#    ('PP', 'Pastries and Puff Pastry'),
+#    ('FD', 'Frozen Desserts'),
+#    ('PC', 'Puddings and Custards'),
+#    ('FR', 'Fruit-based Desserts'),
+#    ('ID', 'International Desserts'),
+#    ('OT', 'Other Desserts'),
+# )
+
 class Pastryrecipe(models.Model):
     title = models.CharField(max_length=100)
+    # category = models.CharField(max_length=4,
+    #   choices=CATEGORY,
+    #   default=CATEGORY[0][0])
     preptime = models.IntegerField()
     cookingtime = models.IntegerField()
     totaltime = models.IntegerField()
     yields = models.IntegerField()
-    instructions = models.TextField()
     ingredients = models.TextField()
-    img = models.ImageField(upload_to='photos/', blank=True)
+    instructions = models.TextField()
+    img = models.ImageField(upload_to='recipes/', blank=True)
     
     def __str__(self):
       return f'{self.title} ({self.id})'
@@ -23,4 +39,4 @@ class Photo(models.Model):
     recipe = models.ForeignKey(Pastryrecipe, on_delete=models.CASCADE)
 
     def __str__(self):
-      return f"Photo for pastryrecipe_id: {self.pastryrecipe_id} @ {self.url}"
+      return f"Photo for {self.recipe_id} @ {self.url}"
