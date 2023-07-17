@@ -26,8 +26,7 @@ class Pastryrecipe(models.Model):
     yields = models.IntegerField()
     ingredients = models.TextField()
     instructions = models.TextField()
-    img = models.ImageField(upload_to='recipes/', blank=True)
-    
+        
     def __str__(self):
       return f'{self.title} ({self.id})'
 
