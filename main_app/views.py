@@ -44,7 +44,7 @@ class RecipeCreate(CreateView):
   model = Pastryrecipe
   fields = '__all__'
   template_name = 'main_app/recipe_form.html'
-  reverse_lazy = ('recipe_create') 
+  success_url = reverse_lazy('recipe_create')
 
 def form_valid(self, form):
   form.instance.photo = self.request.FILES.get('photo')
