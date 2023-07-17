@@ -6,7 +6,7 @@
     <span class="card-title">{{ recipe.title }}</span>
     <div class="recipe-image">
         {% if recipe.photo_set.exists %}
-        <img class="responsive-img" src="{{ recipe.img.url }}">
+        <img class="responsive-img" src="{{ recipe.photo.url }}">
         {% else %}
         <img class="responsive-img" src="https://i.imgur.com/cHwo2Gz.jpg">
         {% endif %}
