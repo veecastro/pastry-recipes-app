@@ -17,6 +17,9 @@
       href="https://fonts.googleapis.com/css2?family=Lumanosimo&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="navbar-fixed" style="background-color: #124275">
@@ -24,15 +27,16 @@
         <div class="nav-wrapper" style="background-color: #96c0ed">
           <ul>
             <li>
-              <a href="{% url 'home' %}" class="left brand-logo"
-                >&nbsp;&nbsp;Pastry App</a
-              >
+              <a href="{% url 'home' %}" class="left brand-logo" style="font-family: Dancing Script, cursive;
+              font-size: 4rem;
+              font-weight: 200;
+              letter-spacing: .1 rem;">&nbsp;&nbsp;Sweet Treats</a>
             </li>
           </ul>
           <ul class="right">
             <!-- <li><a href="{% url 'about' %}" style="color: #727477;">About</a></li> -->
-            <li><a href="{% url 'recipe_create' %}">Add Pastry Recipe</a></li>
-            <li><a href="{% url 'index' %}">View All Recipes</a></li>
+            <li><a href="{% url 'recipe_create' %}" style="font-family: Lumanosimo, cursive;">Add Pastry Recipe</a></li>
+            <li><a href="{% url 'index' %}" style="font-family: Lumanosimo, cursive;">View All Recipes</a></li>
           </ul>
         </div>
       </nav>
