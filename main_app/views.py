@@ -26,10 +26,8 @@ def recipes_detail(request, recipe_id):
   return render(request, 'recipes/detail.html', {
     'recipe': recipe,
     'photos': photos,
-    
-    
-  })
-# still tryingto figure out how to add a photo to a recipe using aws  
+   })
+
 def add_photo(request, pastryrecipe_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
@@ -61,7 +59,7 @@ class RecipeCreate(CreateView):
 def form_valid(self, form):
   form.instance.photo = self.request.FILES.get('photo')
   return super(RecipeCreate, self).form_valid(form)
-# still trying to figure out the code btwn comments
+
 
 class RecipeUpdate(UpdateView):
   model = Pastryrecipe
