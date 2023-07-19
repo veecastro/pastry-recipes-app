@@ -3,17 +3,17 @@ from django.urls import reverse
 
 # Create your models here.
 
-# CATEGORY_CHOICES = (
-#    ('CC', 'Cakes and Cupcakes'),
-#    ('PT', 'Pies and Tarts'),
-#    ('CB', 'Cookies and Bisquits'),
-#    ('PP', 'Pastries and Puff Pastry'),
-#    ('FD', 'Frozen Desserts'),
-#    ('PC', 'Puddings and Custards'),
-#    ('FR', 'Fruit-based Desserts'),
-#    ('ID', 'International Desserts'),
-#    ('OT', 'Other Desserts'),
-# )
+CATEGORY_CHOICES = (
+   ('CC', 'Cakes and Cupcakes'),
+   ('PT', 'Pies and Tarts'),
+   ('CB', 'Cookies and Bisquits'),
+   ('PP', 'Pastries and Puff Pastry'),
+   ('FD', 'Frozen Desserts'),
+   ('PC', 'Puddings and Custards'),
+   ('FR', 'Fruit-based Desserts'),
+   ('ID', 'International Desserts'),
+   ('OT', 'Other Desserts'),
+)
 
 class Pastryrecipe(models.Model):
     title = models.CharField(max_length=100, verbose_name="Title")
@@ -23,7 +23,7 @@ class Pastryrecipe(models.Model):
     yields = models.IntegerField(verbose_name="Yields")
     ingredients = models.TextField(verbose_name="Ingredients")
     instructions = models.TextField(verbose_name="Instructions")
-    # categorytype = models.CharField('Category', max_length=2, choices=CATEGORY_CHOICES)
+    # categ = models.CharField('Category', max_length=2, choices=CATEGORY_CHOICES, default=CATEGORY_CHOICES[0][0])
 
         
     def __str__(self):
