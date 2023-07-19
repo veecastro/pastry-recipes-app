@@ -3,7 +3,7 @@ import uuid
 import boto3
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Pastryrecipe, Photo, Category
+from .models import Pastryrecipe, Photo 
 
 
 
@@ -23,17 +23,16 @@ def recipes_index(request):
 def recipes_detail(request, recipe_id):
   recipe = Pastryrecipe.objects.get(id=recipe_id)
   photos = recipe.photo_set.all()
-  # photos = Photo.objects.filter(recipe_id=recipe_id)
   return render(request, 'recipes/detail.html', {
     'recipe': recipe,
     'photos': photos,
    })
 
-def categories_detail(request):
-  categories = Category.objects.all()
-  return render(request, 'categories/detail.html', {
-    'categories': categories
-  })
+# def categories_detail(request):
+#   categories = Category.objects.all()
+#   return render(request, 'categories/detail.html', {
+#     'categories': categories
+#   })
 
 def add_photo(request, pastryrecipe_id):
   photo_file = request.FILES.get('photo-file', None)
@@ -66,7 +65,7 @@ class RecipeCreate(CreateView):
 
 def form_valid(self, form):
   form.instance.photo = self.request.FILES.get('photo')
-  form.instance.category = self.request.POST.get('category')
+  # form.instance.category = self.request.POST.get('category')
   return super(RecipeCreate, self).form_valid(form)
 
 
