@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if object %}
+<h1>Edit {{ object.title }}</h1>
+{% else %}
+<!-- CSS stying wasn't functioning for 'add recipe' -->
+<h1 style="font-family: Lumanosimo, cursive;  
+text-align: center;
+margin-bottom: 5%;
+padding: 5px;
+font-size: 2rem;
+font-weight: 200;
+letter-spacing: 0.5rem;
+color: #454446;">Add Pastry Recipe</h1>
+{% endif %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <table style="border-collapse: collapse;">
+    <!-- Render the inputs inside of <tr>s & <td>s -->
+    {% for field in form %}
+    <tr>
+      <td style="padding: 5px; text-align: center;">{{ field.label_tag }}</td>
+      <td style="padding: 5px;">{{ field }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <input style="background-color: rgb(244, 206, 141); color: floralwhite" type="submit" value="Submit!" class="btn">
+  <a class="btn btn-outline-warning" href="{% url 'home' %}">Cancle</a>
+</form>
+{% else %}
+<br>
+Login to add or edit a recipe! or create an account if you don't have one.
+
+{% endif %}
+
+{% endblock %}
