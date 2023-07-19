@@ -47,10 +47,11 @@ color: #454446;">Recipe Details</h1>
         <a href="{% url 'recipe_update' recipe.id %}">Edit</a>
         <a href="{% url 'recipe_delete' recipe.id %}">Delete</a>
         {% endif %}
-    </div>
+
     <div style="display: flex; justify-content: center;">
     <a class="btn btn-outline-warning" href="{% url 'index' %}">Return to Recipes</a>
     </div>
+</div>
 </div>
 
 
