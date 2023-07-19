@@ -8,8 +8,11 @@ from .models import Pastryrecipe, Photo, Category
 
 
 def home(request):
-  return render(request, 'home.html')
-  
+  # return render(request, 'home.html')
+  pastryrecipes = Pastryrecipe.objects.all()
+  return render(request, 'recipes/index.html', {
+    'pastryrecipes': pastryrecipes
+  })
 
 def about(request):
   return render(request, 'about.html')
