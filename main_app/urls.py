@@ -14,6 +14,7 @@ urlpatterns = [
     path('photos/<int:photo_id>/delete/', views.delete_photo, name='delete_photo'),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
+    path('search_recipe/', views.search_recipe, name='search'),
 ]
 
 

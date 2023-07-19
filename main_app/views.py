@@ -71,4 +71,13 @@ class RecipeDelete(DeleteView):
   success_url = '/recipes/'
   template_name = 'main_app/recipe_confirm_delete.html'
 
+def search_recipe(request):
+  if request.method == 'POST':
+    searched = request.POST['searched']
+    recipes = Pastryrecipe.objects.filter(title__contains=searched)
+    return render(request, 'search_recipe.html', {'searched': searched, 'recipes': recipes})
+  else:
+    return render(request, 'search_recipe.html', {})
+  
+
 
