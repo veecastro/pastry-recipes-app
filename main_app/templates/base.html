@@ -34,7 +34,14 @@
               letter-spacing: .1 rem;">&nbsp;&nbsp;Sweet Treats</a>
             </li>
           </ul>
+          <!-- <form class="d-flex" method="POST" action="{% url 'search' %}">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </form> -->
           <ul class="right">
+            <!-- <li><a href="{% url 'search' %}" style="font-family: Lumanosimo, cursive;">Search</a></li> -->
+            <li><a href="{% url 'index' %}" style="font-family: Lumanosimo, cursive;">View All Recipes</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'recipe_create' %}" style="font-family: Lumanosimo, cursive;">Add Pastry Recipe</a></li>
             <li><a href="{% url 'logout' %}" style="font-family: Lumanosimo, cursive;">Logout</a></li>
@@ -44,7 +51,6 @@
             {% endif %}
 
             <!-- <li><a href="{% url 'about' %}" style="color: #727477;">About</a></li> -->
-            <li><a href="{% url 'index' %}" style="font-family: Lumanosimo, cursive;">View All Recipes</a></li>
           </ul>
         </div>
       </nav>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<center>
+    {% if searched %}
+    <h1>You searched for "{{ searched }}"</h1>
+    <h2>Results:</h2>
+    {% for recipe in recipes %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{ recipe.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ recipe.name }}</h5>
+            <p class="card-text">{{ recipe.description }}</p>
+            <a href="{% url 'detail' recipe.id %}" class="btn btn-primary">View Recipe</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>You searched for ... </h1>
+    {% endif %}
+</center>
+
+{%endblock%}
