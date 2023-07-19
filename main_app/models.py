@@ -38,12 +38,12 @@ class Photo(models.Model):
     def __str__(self):
       return f"Photo for recipe_id: {self.recipe_id} @ {self.url}"
     
-class Category(models.Model):
-    recipes = models.ForeignKey(Pastryrecipe, on_delete=models.CASCADE)
-    name = models.CharField(max_length=4, choices=CATEGORY, default=CATEGORY[0][1])
+# class Category(models.Model):
+#     recipes = models.ForeignKey(Pastryrecipe, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=4, choices=CATEGORY, default=CATEGORY[0][1])
 
-    def __str__(self):
-      return f"{self.get_name_display()}"
+#     def __str__(self):
+#       return f"{self.get_name_display()}"
     
-    def get_absolute_url(self):
-      return reverse('categories_detail', kwargs={'pk': self.id})
+#     def get_absolute_url(self):
+#       return reverse('categories_detail', kwargs={'pk': self.id})
