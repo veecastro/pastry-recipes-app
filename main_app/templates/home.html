@@ -10,6 +10,17 @@ font-weight: 200;
 letter-spacing: 0.5rem;
 color: #454446;">Home</h1>
 
-
+<h1>Categories</h1>
+<ul class="horiz-container">
+    {% for category in categories %}
+    <a href="{% url 'categories_detail' category.id %}">
+        <div class="rest-container">
+            <div class="empty-container"></div>
+            <img src="{{ photo.url }}" class="index-img" alt="{{ category.name }}">
+            <li>{{ category.name }}</li>
+        </div>
+    </a>
+    {% endfor %}
+</ul>
 
 {% endblock %}
